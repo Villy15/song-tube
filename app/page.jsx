@@ -1,35 +1,39 @@
 'use client'
 import Form from "./components/Form"
 import Video from "./components/Video"
-import { useState, useEffect } from "react"
+
+import { useState } from "react"
+import { useSavedInputURL, usePlayVideo, useSkipVideo, usePlaybackSpeed, useLoopVideo, useCurrentTime } from "./hooks"
 
 const HomePage = () => {
-  const [inputValue, setInputValue] = useState('');
-  const [videoId, setVideoId] = useState('');
+  const [player, setPlayer] = useState(null);
+  
+  const { inputURL, videoId, handleChange } = useSavedInputURL(); // Youtube URL
+  const { isPlaying, handlePlay } = usePlayVideo(player);   // Playing the video
+  const { skipForward, skipBackward } = useSkipVideo(player); // Skipping the video
+  const { handlePlaybackSpeed } = usePlaybackSpeed(player); // Playback speed of the video
+  const { isLooping, handleLoop } = useLoopVideo(player); // Looping the video
+  const { getCurrentTime } = useCurrentTime(player); // Current time of the video
 
-  // Load saved input value from localStorage on initial render
-  useEffect(() => {
-    const savedInputValue = localStorage.getItem('inputValue');
-    
-    if (savedInputValue) {
-      setInputValue(savedInputValue);
-      setVideoId(savedInputValue.split('v=')[1]);
-    }
-  }, []);
+  // Props for the Video component 
+  const videoProps = {
+    videoId, setPlayer
+  }
 
-  const handleChange = (e) => {
-    const newValue = e.target.value;
-    setInputValue(newValue);
-    setVideoId(newValue.split('v=')[1]);
-    
-    // Save input value to localStorage
-    localStorage.setItem('inputValue', newValue);
+  // Props for the Form component
+  const formProps = {
+    inputURL, handleChange, 
+    isPlaying, handlePlay, 
+    skipForward, skipBackward, 
+    handlePlaybackSpeed,
+    isLooping, handleLoop,
+    getCurrentTime
   }
 
   return (
     <>
-      <Video videoId={videoId}/>
-      <Form inputValue={inputValue} handleChange={handleChange}/>
+      <Video {...videoProps}/>
+      <Form {...formProps}/>
     </>
   )
 }
