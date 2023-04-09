@@ -116,6 +116,9 @@ button:active{
     border-radius: 4px;
     margin: 4px;
 }
+#btn-custom {
+    width: 30%;
+}
 
 .btn-now {
     background-color: var(--gray);
@@ -194,4 +197,24 @@ input:checked+.slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+/* Slider */
+.playback-speed-slider-container {
+    width: 100%;
+   
+}
+
+.playback-speed-slider {
+    width: 90%; /* Full-width */
+    height: 25px; /* Specified height */
+    background: var(--gray); /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+}
+
+.playback-speed-slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
 }

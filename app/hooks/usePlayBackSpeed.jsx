@@ -2,9 +2,14 @@ import { useState, useEffect } from "react";
 
 export const usePlaybackSpeed = (player) => {
   const [speed, setSpeed] = useState(1);
+  const [isCustomClicked, setIsCustomClicked] = useState(false);
   const [isClicked05, setClicked05] = useState(false);
   const [isClicked075, setClicked075] = useState(false);
   const [isClicked1, setClicked1] = useState(true);
+
+  const handleCustomClick = (e) => {
+    setIsCustomClicked(!isCustomClicked);
+  }
 
   const handlePlaybackSpeed = (e) => {
     if (player) {
@@ -31,5 +36,5 @@ export const usePlaybackSpeed = (player) => {
       player.setPlaybackRate(parseFloat(speed));
   }, [player, speed]);
 
-  return { isClicked05, isClicked075, isClicked1, handlePlaybackSpeed };
+  return { isClicked05, isClicked075, isClicked1, handlePlaybackSpeed, speed, isCustomClicked, handleCustomClick};
 }

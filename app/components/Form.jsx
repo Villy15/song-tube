@@ -1,7 +1,9 @@
+import { useState } from 'react';
+
 const Form = ({ inputURL, handleChange, 
                 isPlaying, handlePlay, 
                 skipForward, skipBackward,
-                isClicked05, isClicked075, isClicked1, handlePlaybackSpeed,
+                isClicked05, isClicked075, isClicked1, handlePlaybackSpeed, speed, isCustomClicked, handleCustomClick,
                 handleLoop,
                 getCurrentTime }) => {
   return (
@@ -36,12 +38,15 @@ const Form = ({ inputURL, handleChange,
             </div>
         </div>
         <div className="form-group">
-            <label>Playback speed</label>
+            <label>Playback speed: {speed}</label>
             <div className="form-row">
-                <button className={isClicked05 ? "btn-clicked" : ""} value={0.5} onClick={handlePlaybackSpeed}>0.5x</button>
-                <button className={isClicked075 ? "btn-clicked" : ""} value={0.75} onClick={handlePlaybackSpeed}>0.75x</button>
-                <button className={isClicked1 ? "btn-clicked" : ""} value={1} onClick={handlePlaybackSpeed}>1x</button>
-                <button>Custom</button>
+                {isCustomClicked ? (
+                    <RangeSlider speed={speed} handlePlaybackSpeed={handlePlaybackSpeed}/>
+                ) : (
+                    <PlayBackSpeeds isClicked05={isClicked05} isClicked075={isClicked075} 
+                                    isClicked1={isClicked1} handlePlaybackSpeed={handlePlaybackSpeed}/>
+                )}
+                <button id="btn-custom" onClick={handleCustomClick}>Custom</button>
             </div>
         </div>
         <div className="form-group">
@@ -63,5 +68,23 @@ const Form = ({ inputURL, handleChange,
     </div>
   )
 }
+
+function PlayBackSpeeds({isClicked05, isClicked075, isClicked1, handlePlaybackSpeed}) {
+    return (
+        <>
+            <button className={isClicked05 ? "btn-clicked" : ""} value={0.5} onClick={handlePlaybackSpeed}>0.5x</button>
+            <button className={isClicked075 ? "btn-clicked" : ""} value={0.75} onClick={handlePlaybackSpeed}>0.75x</button>
+            <button className={isClicked1 ? "btn-clicked" : ""} value={1} onClick={handlePlaybackSpeed}>1x</button>
+        </>
+    )
+}
+
+function RangeSlider({speed, handlePlaybackSpeed}) {
+    return (
+      <div className="playback-speed-slider-container">
+        <input type="range" min="0.25" max="2" step="0.05" value={speed} onChange={handlePlaybackSpeed} className="playback-speed-slider"/>
+      </div>
+    );
+  }
 
 export default Form
