@@ -2,7 +2,7 @@ const Form = ({ inputURL, handleChange,
                 isPlaying, handlePlay, 
                 skipForward, skipBackward,
                 handlePlaybackSpeed,
-                isLooping, handleLoop,
+                handleLoop,
                 getCurrentTime }) => {
   return (
     <div className="form-container">
@@ -14,16 +14,16 @@ const Form = ({ inputURL, handleChange,
             <div className="form-row" id="form-loop">
                 <div className="loop">
                     <label>Loop</label>
-                    <input type="checkbox" checked={isLooping} onChange={handleLoop}/>
+                    <input id="loop-checkbox" type="checkbox" onChange={handleLoop}/>
                 </div>
                 <div className="loop-start">
                     <label>Loop Start</label>
-                    <input type="text" id="loop-start-time" value="0:00" onChange={getCurrentTime}/>
+                    <input type="text" id="loop-start-time" onChange={getCurrentTime}/>
                     <button className="btn-now" id="btn-now-loopstart" onClick={getCurrentTime}>Now</button>
                 </div>
                 <div className="loop-end">
                     <label>Loop End</label>
-                    <input type="text" id="loop-end-time" value="0:00" onChange={getCurrentTime}/>
+                    <input type="text" id="loop-end-time" onChange={getCurrentTime}/>
                     <button className="btn-now" id="btn-now-loopend" onClick={getCurrentTime}>Now</button>
                 </div>
             </div>
@@ -40,7 +40,7 @@ const Form = ({ inputURL, handleChange,
         <div className="form-group">
             <label>Position</label>
             <div className="form-row">
-                <button>Video Start</button>
+                {/* <button>Video Start</button> */}
                 <button onClick={skipBackward}>-5 sec</button>
                 <button onClick={skipForward}>+5 sec</button>
             </div>
@@ -50,7 +50,7 @@ const Form = ({ inputURL, handleChange,
                 <button onClick={handlePlay}>
                     {isPlaying ? 'Pause' : 'Play'}
                 </button>
-                <button>Share</button>
+                {/* <button>Share</button> */}
             </div>
         </div>
     </div>
