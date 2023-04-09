@@ -1,7 +1,7 @@
 # Song Tube
 This is a web application that takes a video from the youtube and provides controls such as loops, playback speed, and position (TBA). There is no way to create loops in youtube video designed for practicing sections of a song repeatedly. 
 
-![alt text](https://github.com/Villy15/song-tube/blob/main/misc/sample.png "Sample Page")
+![alt text](https://github.com/Villy15/song-tube/blob/main/misc/sample.jpg "Sample Page")
 
 ## Getting Started
 Take a youtube format `https://www.youtube.com/watch?v=dQw4w9WgXcQ` for example. This site can only accept this style of format as of the moment. 
