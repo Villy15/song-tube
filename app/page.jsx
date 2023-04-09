@@ -3,7 +3,12 @@ import Form from "./components/Form"
 import Video from "./components/Video"
 
 import { useState } from "react"
-import { useSavedInputURL, usePlayVideo, useSkipVideo, usePlaybackSpeed, useLoopVideo, useCurrentTime } from "./hooks"
+import { useCurrentTime } from "./hooks/useCurrentTime"
+import { useLoopVideo } from "./hooks/useLoopVideo"
+import { usePlaybackSpeed } from "./hooks/usePlaybackSpeed"
+import { usePlayVideo } from "./hooks/usePlayVideo"
+import { useSavedInputURL } from "./hooks/useSavedInputURL"
+import { useSkipVideo } from "./hooks/useSkipVideo"
 
 const HomePage = () => {
   const [player, setPlayer] = useState(null);
