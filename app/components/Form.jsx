@@ -1,7 +1,7 @@
 const Form = ({ inputURL, handleChange, 
                 isPlaying, handlePlay, 
                 skipForward, skipBackward,
-                handlePlaybackSpeed,
+                isClicked05, isClicked075, isClicked1, handlePlaybackSpeed,
                 handleLoop,
                 getCurrentTime }) => {
   return (
@@ -14,26 +14,33 @@ const Form = ({ inputURL, handleChange,
             <div className="form-row" id="form-loop">
                 <div className="loop">
                     <label>Loop</label>
-                    <input id="loop-checkbox" type="checkbox" onChange={handleLoop}/>
+                    <label className="switch">
+                        <input id="loop-checkbox" type="checkbox" onChange={handleLoop}/>
+                        <span className="slider round"></span>
+                    </label>
                 </div>
-                <div className="loop-start">
+                <div className="loop start">
                     <label>Loop Start</label>
-                    <input type="text" id="loop-start-time" onChange={getCurrentTime}/>
-                    <button className="btn-now" id="btn-now-loopstart" onClick={getCurrentTime}>Now</button>
+                    <div className="form-row">
+                        <input type="text" id="loop-start-time" onChange={getCurrentTime}/>
+                        <button className="btn-now" id="btn-now-loopstart" onClick={getCurrentTime}>Now</button>
+                    </div>
                 </div>
-                <div className="loop-end">
+                <div className="loop end">
                     <label>Loop End</label>
-                    <input type="text" id="loop-end-time" onChange={getCurrentTime}/>
-                    <button className="btn-now" id="btn-now-loopend" onClick={getCurrentTime}>Now</button>
+                    <div className="form-row">
+                        <input type="text" id="loop-end-time" onChange={getCurrentTime}/>
+                        <button className="btn-now" id="btn-now-loopend" onClick={getCurrentTime}>Now</button>
+                    </div>
                 </div>
             </div>
         </div>
         <div className="form-group">
             <label>Playback speed</label>
             <div className="form-row">
-                <button value={0.5} onClick={handlePlaybackSpeed}>0.5x</button>
-                <button value={0.75} onClick={handlePlaybackSpeed}>0.75x</button>
-                <button value={1} onClick={handlePlaybackSpeed}>1x</button>
+                <button className={isClicked05 ? "btn-clicked" : ""} value={0.5} onClick={handlePlaybackSpeed}>0.5x</button>
+                <button className={isClicked075 ? "btn-clicked" : ""} value={0.75} onClick={handlePlaybackSpeed}>0.75x</button>
+                <button className={isClicked1 ? "btn-clicked" : ""} value={1} onClick={handlePlaybackSpeed}>1x</button>
                 <button>Custom</button>
             </div>
         </div>
@@ -47,7 +54,7 @@ const Form = ({ inputURL, handleChange,
         </div>
         <div className="form-group">
             <div className="form-row">
-                <button onClick={handlePlay}>
+                <button id="btn-play-pause" onClick={handlePlay}>
                     {isPlaying ? 'Pause' : 'Play'}
                 </button>
                 {/* <button>Share</button> */}

@@ -1,36 +1,19 @@
+# Song Tube
+This is a web application that takes a video from the youtube and provides controls such as loops, playback speed, and position (TBA). There is no way to create loops in youtube video designed for practicing sections of a song repeatedly. 
+
+![alt text](https://github.com/Villy15/song-tube/blob/main/misc/sample.png "Sample Page")
+
 ## Getting Started
+Take a youtube format `https://www.youtube.com/watch?v=dQw4w9WgXcQ` for example. This site can only accept this style of format as of the moment. 
 
-First, run the development server:
+Pressing the `Now` buttons on the side of the text field of Loop Start and End would get the current time the video is playing. 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Playback speeds would change the current playback rate of the video. You can statically choose `0.5x` `0.75x`, and `1x` and soon we can customize the playback rate to your desired choice.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Position is just skipping the video by either `-5` or `+5` seconds. You can also use the `left` and `right` arrow keys.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Play/Pause button would just play or pause the button. You can also use the `spacebar` key. 
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## To improve
+> I would soon add the ability to take sections of the song and position the current time to each section
+> I would soon add databases where you can jump through multiple songs and have your sections saved through your database. 

@@ -16,7 +16,7 @@ const HomePage = () => {
   const { inputURL, videoId, handleChange } = useSavedInputURL(); // Youtube URL
   const { isPlaying, handlePlay } = usePlayVideo(player);   // Playing the video
   const { skipForward, skipBackward } = useSkipVideo(player); // Skipping the video
-  const { handlePlaybackSpeed } = usePlaybackSpeed(player); // Playback speed of the video
+  const { isClicked05, isClicked075, isClicked1, handlePlaybackSpeed } = usePlaybackSpeed(player); // Playback speed of the video
   const { isLooping, handleLoop } = useLoopVideo(player); // Looping the video
   const { getCurrentTime } = useCurrentTime(player); // Current time of the video
 
@@ -30,7 +30,7 @@ const HomePage = () => {
     inputURL, handleChange, 
     isPlaying, handlePlay, 
     skipForward, skipBackward, 
-    handlePlaybackSpeed,
+    isClicked05, isClicked075, isClicked1, handlePlaybackSpeed,
     isLooping, handleLoop,
     getCurrentTime
   }
