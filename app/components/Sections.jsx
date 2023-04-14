@@ -29,7 +29,7 @@ const Sections = ({ sections, time, seekSection}) => {
         <div>
            {sections.map((section) => (
              <button key={`${section.name}-${section.time}-seek`} className='btn-section' onClick={handleSeekSection(section.time)}>
-               {section.time}
+               {new Date(section.time * 1000).toISOString().substr(14, 5)}
              </button>
            ))}
          </div>
