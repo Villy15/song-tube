@@ -44,7 +44,19 @@ export const useSection = (player) => {
             }
         });
         setTimes((prevTimes) => ({ ...prevTimes, ...savedTimes }));
-    }, []);
+
+        // Add event listeners for each letter in the times object
+        const handleKeyDown = (event) => {
+            const key = event.key.toUpperCase();
+            if (times[key] !== undefined) {
+                seekSection(times[key]);
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [times, seekSection]);
 
     return { sections, time, seekSection };
 };
