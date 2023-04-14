@@ -35,7 +35,7 @@ input {
     font-size: 40px;
 }
 
-.container {
+.main-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -45,7 +45,7 @@ input {
 }
 
 @media only screen and (min-width: 1300px) {
-    .container {
+    .main-container {
         flex-direction: row;
     }
 }
@@ -134,6 +134,17 @@ button:active{
     border-radius: 4px;
 }
 
+.section-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.btn-section {
+    width: 200px;
+    margin: 4px 20px
+}
 
 /* Forms Styles */
 /* The switch - the box around the slider */

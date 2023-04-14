@@ -1,5 +1,7 @@
 import './globals.css'
 import Header from './components/Header'
+import Sections from './components/Sections'
+
 
 export const metadata = {
   title: 'Song Tube',
@@ -20,7 +22,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={noto_sans.className}>
       <body>
         <Header />
-        <main className="container">
+        <main>
           {children}
         </main>
       </body>
