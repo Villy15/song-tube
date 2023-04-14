@@ -24,7 +24,7 @@ const HomePage = () => {
   const { getCurrentTime } = useCurrentTime(player); // Current time of the video
 
   // SECTION CONTAINER
-  const { timeA, timeB, timeC, timeD, timeE, time, seekSection } = useSection(player);
+  const { sections, time, seekSection } = useSection(player);
 
   // Props for the Video component 
   const videoProps = {
@@ -42,7 +42,7 @@ const HomePage = () => {
   }
 
   const sectionProps = {
-    timeA, timeB, timeC, timeD, timeE, time, seekSection
+    sections, time, seekSection
   }
 
   return (
