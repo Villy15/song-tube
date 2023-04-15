@@ -20,8 +20,10 @@ const HomePage = () => {
   const { isPlaying, handlePlay } = usePlayVideo(player);   // Playing the video
   const { skipForward, skipBackward } = useSkipVideo(player); // Skipping the video
   const { isClicked05, isClicked075, isClicked1, handlePlaybackSpeed, speed, isCustomClicked, handleCustomClick } = usePlaybackSpeed(player); // Playback speed of the video
-  const { isLooping, handleLoop } = useLoopVideo(player); // Looping the video
-  const { getCurrentTime } = useCurrentTime(player); // Current time of the video
+
+  
+  const { getCurrentTime, loopStartTime, loopEndTime } = useCurrentTime(player); // Current time of the video
+  const { isLooping, handleLoop } = useLoopVideo(player, loopStartTime, loopEndTime); // Looping the video
 
   // SECTION CONTAINER
   const { sections, time, seekSection } = useSection(player);
@@ -38,7 +40,7 @@ const HomePage = () => {
     skipForward, skipBackward, 
     isClicked05, isClicked075, isClicked1, handlePlaybackSpeed, speed, isCustomClicked, handleCustomClick,
     isLooping, handleLoop,
-    getCurrentTime
+    getCurrentTime, loopStartTime, loopEndTime
   }
 
   const sectionProps = {

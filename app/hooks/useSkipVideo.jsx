@@ -31,7 +31,7 @@ export const useSkipVideo = (player) => {
           window.removeEventListener('keydown', handleKeyDown);
         };
       }
-    }, [player, skipForward, skipBackward]);
+    }, [player]);
   
     return { skipForward, skipBackward };
   };

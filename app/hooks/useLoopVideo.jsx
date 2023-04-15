@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 // Function that gets that always gets the current time of the video
-export const useLoopVideo = (player) => {
+export const useLoopVideo = (player, loopStartTime, loopEndTime) => {
     const [isLooping, setIsLooping] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
   
@@ -15,23 +15,14 @@ export const useLoopVideo = (player) => {
       let intervalId;
   
       if (player && isLooping) {
-        const loop_start_time = document.getElementById('loop-start-time');
-        const loop_end_time = document.getElementById('loop-end-time');
-  
-        const start_time = loop_start_time.value;
-        const end_time = loop_end_time.value;
-  
-        const start_time_seconds = start_time.split(':').reduce((acc, time) => (60 * acc) + +time);
-        const end_time_seconds = end_time.split(':').reduce((acc, time) => (60 * acc) + +time);
-  
         intervalId = setInterval(() => {
           const newTime = player.getCurrentTime();
           setCurrentTime(newTime);
   
-          if (currentTime >= end_time_seconds) {
-            player.seekTo(start_time_seconds, true);
-          } else if (currentTime < start_time_seconds) {
-            player.seekTo(start_time_seconds, true);
+          if (currentTime >= loopEndTime.current.timestamp) {
+            player.seekTo(loopStartTime.current.timestamp, true);
+          } else if (currentTime < loopStartTime.current.timestamp) {
+            player.seekTo(loopStartTime.current.timestamp, true);
           }
         }, 100); // update the current time every 100 milliseconds
       }

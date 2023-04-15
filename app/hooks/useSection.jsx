@@ -56,7 +56,7 @@ export const useSection = (player) => {
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
         };
-    }, [times, seekSection]);
+    }, [player]);
 
     return { sections, time, seekSection };
 };

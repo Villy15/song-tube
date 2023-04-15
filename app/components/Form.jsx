@@ -5,7 +5,7 @@ const Form = ({ inputURL, handleChange,
                 skipForward, skipBackward,
                 isClicked05, isClicked075, isClicked1, handlePlaybackSpeed, speed, isCustomClicked, handleCustomClick,
                 handleLoop,
-                getCurrentTime }) => {
+                getCurrentTime, loopStartTime, loopEndTime}) => {
   return (
     <div className="form-container">
         <div className="form-group">
@@ -24,14 +24,14 @@ const Form = ({ inputURL, handleChange,
                 <div className="loop start">
                     <label>Loop Start</label>
                     <div className="form-row">
-                        <input type="text" id="loop-start-time" onChange={getCurrentTime}/>
+                        <input type="text" id="loop-start-time" onChange={getCurrentTime} ref={loopStartTime}/>
                         <button className="btn-now" id="btn-now-loopstart" onClick={getCurrentTime}>Now</button>
                     </div>
                 </div>
                 <div className="loop end">
                     <label>Loop End</label>
                     <div className="form-row">
-                        <input type="text" id="loop-end-time" onChange={getCurrentTime}/>
+                        <input type="text" id="loop-end-time" onChange={getCurrentTime} ref={loopEndTime}/>
                         <button className="btn-now" id="btn-now-loopend" onClick={getCurrentTime}>Now</button>
                     </div>
                 </div>
